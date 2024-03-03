@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomTexturePacks | Create Texturepack</title>
+    <link rel="stylesheet" href="../stylesheet/product.css">
+</head>
+<body>
+    <div>
+        <form action="">
+            <div class="container-opcion-form">
+                <div class="container-text-form">
+                    <p id="TexturepackName-text">Texturepack Name:</p>
+                </div>
+                <div class="conten-inputs">
+                    <input type="text" placeholder="Texturepack" required id="name">
+                </div>
+            </div>
+
+    
+            <div class="container-opcion-form">
+                <div class="container-text-form">
+                    <p class="container-text-form" id="TexturepackMCVersion-text">Minecraft Version:</p>
+                </div>
+                <div class="conten-inputs">
+                    <select name="" id="versionMCT" class="" required>
+                        <option value="8" id="1.18-and-later">1.18 (and later)</option>
+                        <option value="7">1.17 - 1.17.1</option>
+                        <option value="6">1.16.2 - 1.16.5</option>
+                        <option value="5">1.15 - 1.16.1</option>
+                        <option value="4">1.13 - 1.14.4</option>
+                        <option value="3">1.11 - 1.12.2</option>
+                        <option value="2">1.9 - 1.10.2</option>
+                        <option value="1">1.6.1 - 1.8.9</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="container-opcion-form">
+                <div class="container-text-form">
+                    <p class="container-text-form" id="TexturepackVersion-text">Texturepack Version:</p>
+                </div>
+                <div class="conten-inputs">
+                    <input type="number" placeholder="1.0" required id="versionT" min="1">
+                </div>
+            </div>
+            <div class="container-opcion-form">
+                <div class="container-text-form">
+                    <p class="container-text-form">Author:</p>
+                </div>
+                <div class="conten-inputs">
+                    <input type="text" id="autor" placeholder="Username">
+                </div>
+            </div>
+    
+            <div class="container-opcion-form">
+                <div class="container-text-form">
+                    <p id="TexturepackDescripcion-text">Texturepack Description:</p>
+                </div>
+                <div class="container-textarea-form">
+                    <textarea type="text" id="descripcion-texturepack" rows="8" placeholder="An amazing minecraft texturepack..."></textarea>
+                </div>
+            </div>
+        </form> 
+        <div class="buttons">
+            <button style="background-color: rgb(224, 52, 52);" id="cancel">Cancel</button>
+            <button style="background-color: rgb(74, 231, 74);" id="aceptar">Accept</button>
+        </div>
+    </div>
+    <div class="loading" style="display: none;">
+        <div class="loader"></div>
+        <div class="loading-text">Loading...</div>
+    </div>
+    <script>
+    const {ipcRenderer, remote } = require('electron');
+      document.querySelector('#aceptar').addEventListener('click', () => {
+        const nameTexturepack = document.querySelector('#name').value;
+        const pack_format = document.querySelector('#versionMCT').value;
+        const versionTexturepack = document.getElementById('versionT').value;
+        const descripcionTexturepack = document.getElementById('descripcion-texturepack').value;
+        const autor = document.getElementById('autor').value;
+
+        if (nameTexturepack === "" || pack_format === "" || versionTexturepack === "") {
+            alert('Debes llenar los campos obligatorios');
+        } else {
+            const infoTexturepack = {
+                "pack_format": pack_format,
+                "description": descripcionTexturepack,
+                "name": nameTexturepack,
+                "version": versionTexturepack,
+                "author": autor,
+            };
+
+            const loadingScreen = document.querySelector('.loading').style.display = 'flex';
+            ipcRenderer.send('save:texturepack', infoTexturepack);
+        }
+    });
+    document.getElementById('cancel').addEventListener('click', e=>{
+        ipcRenderer.send('closed:product')
+    })
+    
+    </script>
+    <script src="../scripts/managerLenguajesCreateTexture.js"></script> 
+</body>
+</html>

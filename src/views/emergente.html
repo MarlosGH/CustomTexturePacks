@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CustomTexturePacks</title>
+</head>
+<body>
+    <h1 style="text-align: center;">¡Ha ocurrido algo!</h1>
+    <p style="text-align: center; font-size: 23px;">Paint.net no esta instalado</p>
+    <p class="btn-download" style="text-align: center;">    <a href="" style="font-size: 20px; color: rgb(35, 34, 34); text-decoration: none;">Descargalo aqui</a>
+    </p>
+    <script>
+        const { shell } = require('electron');
+        document.querySelector('.btn-download').addEventListener('click', e=>{
+            shell.openExternal('https://www.getpaint.net/download.html');
+        })
+    </script>
+</body>
+</html>

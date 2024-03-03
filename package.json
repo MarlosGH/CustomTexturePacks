@@ -1,0 +1,28 @@
+{
+  "name": "CustomTexturePacks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron .",
+    "package-win": "electron-packager . CustomTexturePacks --platform=win32 --arch=x64 --out=dist --overwrite --electron-version=14.0.0",
+    "package-linux": "electron-packager . CustomTexturePacks --platform=linux --arch=x64 --out=dist --overwrite",
+    "package-mac": "electron-packager . CustomTexturePacks --platform=darwin --arch=x64 --out=dist --overwrite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^17.1.2"
+  },
+  "build": {
+    "win": {
+      "requestedExecutionLevel": "requireAdministrator"
+    }
+  }
+  
+}

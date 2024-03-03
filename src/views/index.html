@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CustomTexturePacks</title>
+    <link rel="stylesheet" href="../stylesheet/index.css">
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <div class="opciones">
+                <div class="btn btn-add">
+                    <img src="../imgs/btn-add.png" height="40px">
+                    
+                </div>
+                <div class="btn btn-settings" id="btn-settings">
+                    <img src="../imgs/btn-settings.png" height="40px">
+                </div>
+            </div>
+            <div style="height: 40px; width: 1px; background-color: rgb(121, 121, 121); margin-right: 20px;"></div>
+            <div class="btn">
+                <img src="../imgs/btn-patreon.png" alt="" style="height: 30px !important" class="btn-patreon">
+            </div>
+        </div>
+
+        <input type="text" name="" id="search" placeholder="Search...">
+    </header>
+    <main>
+        <div class="btns">
+            <button id="backButton" style="font-size: 20px; text-decoration: none; color: rgb(94, 94, 94); border: none;">Back...</button>
+            <button id="inicioButton" style="font-size: 20px; text-decoration: none; color: rgb(94, 94, 94); border: none;">Back to Top...</button>
+        </div>
+        <div id="container">
+        </div>
+        
+        <aside id="projectOptions" class="aside invisible">
+            <h2 class="fileNameSettings"></h2>
+            <ul>
+                <li>
+                    <div>
+                        <h4 id="renameButton">Rename</h4>
+                        <div class="contenRenameOptions" style="display: none;">
+                            <input type="text" placeholder="New Name" id="inputRename">
+                            <button id="btn-rename">Save</button>
+                            <button id="btn-rename-cancel">Cancel</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h4 id="exportButton">Export</h4>
+                    </div>
+                </li>
+                <!-- Agrega más opciones aquí según sea necesario -->
+            </ul>
+        </aside>
+    </main>
+    <section id="editor-texto" class="invisible">
+        <div>
+            <h2 class="fileName" style="font-size: 18px; margin-left: 20px;"></h2>
+        </div>
+        <div class="contenedorItems">
+            <textarea id="editor-textarea" rows="15" cols="60" style="resize: none;"></textarea>
+        </div>
+        <div class="contenedorItems" style="justify-content: space-around;">
+            <button id="cancelButton">Cancel</button>
+            <button id="saveButton">Save</button>
+        </div>
+    </section>
+    
+    <script src="../renderer.js"></script>
+    <script>
+        document.addEventListener("keyup", e=>{
+
+        if (e.target.matches("#search")){
+
+            if (e.key ==="Escape")e.target.value = ""
+            document.querySelectorAll(".articulo").forEach(fruta =>{
+
+                fruta.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+                ?fruta.classList.remove("filtro")
+                :fruta.classList.add("filtro")
+            })
+        }
+        })
+    </script>
+    <script src="https://kit.fontawesome.com/a8192839c1.js" crossorigin="anonymous"></script>
+    <script src="../scripts/managerLenguajesIndex.js"></script>
+
+</body>
+</html>

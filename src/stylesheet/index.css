@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(242, 242, 242);
+}
+header{
+    display: flex;
+    background-color: rgb(224, 224, 224);
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
+    justify-content: center;
+    grid-gap: 20px;
+}
+.fas, .fa{
+    font-size: 55px;
+    color: rgb(170, 170, 170);
+    cursor: pointer;
+}
+.containerIcon{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
+.conten-name{
+    padding: 5px;
+    width: 100%;
+}
+p{
+    text-align: center;
+    word-wrap: break-word;
+}
+.folder-item,.containerElement{
+    width: 100%;
+    height: auto;
+}
+
+.contenedorItems{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+}
+button{
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(73, 73, 73);
+    cursor: pointer;
+}
+section{
+    padding: 10px;
+    color: rgb(134, 134, 134);
+}
+#editor-textarea{
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+}
+#search{
+    font-size: 18px;
+    margin-right: 5px;
+    border-radius: 5px;
+    outline: none;
+    padding: 2px 5px;
+    border: 1px solid rgb(37, 37, 37);
+    font-family: cursive;
+}
+.filtro{
+    display: none;
+}
+.ubicacion{
+    font-family: FreeMono, monospace;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+.opciones{
+    display: flex;
+    align-items: center;
+}
+.btn{
+    cursor: pointer;
+    color: white;
+    margin-right: 10px;
+    margin-top: 4px;
+}
+main{
+    width: 100%;
+}
+.invisible{
+    display: none;
+}
+img{
+    height: 40px;
+    cursor: pointer;
+}
+.btns{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+
+.aside {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    background-color: rgb(243, 243, 243);
+    border-left: 1px solid rgb(204, 204, 204);
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+    padding: 20px;
+}
+
+.aside h2 {
+    margin-bottom: 10px;
+}
+
+.aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+.aside li {
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.aside li:hover {
+    background-color: #ddd;
+}
+
+.fileNameSettings{
+    text-align: center;
+}
+#inputRename{
+    padding: 2px 3px;
+}
+#btn-rename, #btn-rename-cancel{
+    padding: 3px 10px;
+    font-size: 15px;
+    margin: 2px;
+    text-align: center;
+}

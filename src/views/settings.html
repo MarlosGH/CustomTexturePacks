@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CustomTexturePacks || Settings</title>
+    <link rel="stylesheet" href="../stylesheet/settings.css">
+</head>
+<body>
+    <div class="opcion-setting">
+        <p>Lenguaje:</p>
+        <select name="" id="selectLenguaje">
+        </select>
+    </div>
+    <div class="buttons">
+         <button style="background-color: rgb(224, 52, 52);" id="cancelSettings" >Cancel</button>
+         <button style="background-color: rgb(74, 231, 74);" id="saveSettings" >Save</button>
+     </div>
+<script>
+    const { ipcRenderer } = require('electron')
+    const path = require('path')
+    const os = require('os');
+    const fs = require('fs')
+
+    const rutaRoaming = path.join(os.homedir(), 'AppData', 'Roaming');
+    const rutaCarpetaCTP = path.join(rutaRoaming, '.CTP');
+    const rutaJsonSettings = path.join(rutaCarpetaCTP, 'config.json')
+
+    document.getElementById('cancelSettings').addEventListener('click', e=>{
+        console.log('as')
+        ipcRenderer.send('closed:settings')
+    })
+
+    fs.readFile(rutaJsonSettings, 'utf8', (err, data) => {
+    if (err) {
+    console.error(err);
+    return;
+    }
+    const config = JSON.parse(data);
+    const language = config.settings.lenguaje;
+    const optionEspanish = document.createElement('option');
+    const optionEnglish = document.createElement('option');
+    optionEspanish.textContent = 'Espanish'
+    optionEspanish.value = 'Espanish'
+    optionEnglish.textContent = 'English'
+    optionEnglish.value = 'English'
+    if(language === 'English'){
+        document.getElementById('selectLenguaje').appendChild(optionEnglish)
+        document.getElementById('selectLenguaje').appendChild(optionEspanish)
+
+    }else if (language === 'Espanish'){
+        document.getElementById('selectLenguaje').appendChild(optionEspanish)
+        document.getElementById('selectLenguaje').appendChild(optionEnglish)
+    }
+    });
+
+    document.getElementById('saveSettings').addEventListener('click', e=>{
+        const lenguaje = document.querySelector('select').value;
+
+        const newJsonConfigobject = {
+            "lenguaje": lenguaje,
+        }
+        console.log()
+        ipcRenderer.send('save:settings', newJsonConfigobject);
+    })
+</script>   
+<script src="../scripts/managerLenguajesSettings.js"></script>
+
+</body>
+</html>

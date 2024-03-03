@@ -1,0 +1,13 @@
+{
+    "pack":{
+        "pack_format": "1",
+        "description": "A Awasone Pack"
+    },
+    "description": {
+        "name": "AlexPack",
+        "version": "1.0",
+        "description": "A Awasone Pack",
+        "author": "Marlos",
+        "format": "PACK_FORMAT_1"
+    }
+}
